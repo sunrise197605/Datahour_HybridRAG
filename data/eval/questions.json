@@ -1,0 +1,702 @@
+[
+  {
+    "qid": "q001",
+    "question": "When was the Eiffel Tower completed?",
+    "ground_truth_answer": "1889",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+    "category": "factual"
+  },
+  {
+    "qid": "q002",
+    "question": "What is the height of the Burj Khalifa?",
+    "ground_truth_answer": "828 meters (2,717 feet)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+    "category": "factual"
+  },
+  {
+    "qid": "q003",
+    "question": "In which year was the Colosseum built?",
+    "ground_truth_answer": "70-80 AD",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Colosseum",
+    "category": "factual"
+  },
+  {
+    "qid": "q004",
+    "question": "What is the Great Barrier Reef made of?",
+    "ground_truth_answer": "Coral",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+    "category": "factual"
+  },
+  {
+    "qid": "q005",
+    "question": "Who designed the Sagrada Familia in Barcelona?",
+    "ground_truth_answer": "Antoni Gaudí",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
+    "category": "factual"
+  },
+  {
+    "qid": "q006",
+    "question": "What is the Statue of Liberty made of?",
+    "ground_truth_answer": "Copper",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+    "category": "factual"
+  },
+  {
+    "qid": "q007",
+    "question": "How tall is Mount Everest?",
+    "ground_truth_answer": "8,848.86 meters (29,031.7 feet)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Mount_Everest",
+    "category": "factual"
+  },
+  {
+    "qid": "q008",
+    "question": "When was Machu Picchu built?",
+    "ground_truth_answer": "15th century",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Machu_Picchu",
+    "category": "factual"
+  },
+  {
+    "qid": "q009",
+    "question": "What country is the Taj Mahal located in?",
+    "ground_truth_answer": "India",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "category": "factual"
+  },
+  {
+    "qid": "q010",
+    "question": "How long is the Great Wall of China?",
+    "ground_truth_answer": "Over 21,000 kilometers (13,000 miles)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+    "category": "factual"
+  },
+  {
+    "qid": "q011",
+    "question": "What is the capital of Japan?",
+    "ground_truth_answer": "Tokyo",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Tokyo",
+    "category": "factual"
+  },
+  {
+    "qid": "q012",
+    "question": "When was the Sydney Opera House opened?",
+    "ground_truth_answer": "1973",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+    "category": "factual"
+  },
+  {
+    "qid": "q013",
+    "question": "What river flows through Paris?",
+    "ground_truth_answer": "Seine",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Paris",
+    "category": "factual"
+  },
+  {
+    "qid": "q014",
+    "question": "Who built the Taj Mahal?",
+    "ground_truth_answer": "Shah Jahan",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "category": "factual"
+  },
+  {
+    "qid": "q015",
+    "question": "What is the population of New York City?",
+    "ground_truth_answer": "Over 8 million",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/New_York_City",
+    "category": "factual"
+  },
+  {
+    "qid": "q016",
+    "question": "When was the Berlin Wall built?",
+    "ground_truth_answer": "1961",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Berlin_Wall",
+    "category": "factual"
+  },
+  {
+    "qid": "q017",
+    "question": "What is the official language of Singapore?",
+    "ground_truth_answer": "English, Malay, Mandarin, and Tamil",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Singapore",
+    "category": "factual"
+  },
+  {
+    "qid": "q018",
+    "question": "How deep is the Grand Canyon?",
+    "ground_truth_answer": "Over 1,800 meters (6,000 feet)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Grand_Canyon",
+    "category": "factual"
+  },
+  {
+    "qid": "q019",
+    "question": "What is the currency of Thailand?",
+    "ground_truth_answer": "Thai Baht",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Bangkok",
+    "category": "factual"
+  },
+  {
+    "qid": "q020",
+    "question": "When was Dubai's Palm Jumeirah completed?",
+    "ground_truth_answer": "2006",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Palm_Jumeirah",
+    "category": "factual"
+  },
+  {
+    "qid": "q021",
+    "question": "What is the longest river in the world?",
+    "ground_truth_answer": "The Nile",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Nile",
+    "category": "factual"
+  },
+  {
+    "qid": "q022",
+    "question": "In which country is Angkor Wat located?",
+    "ground_truth_answer": "Cambodia",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Angkor_Wat",
+    "category": "factual"
+  },
+  {
+    "qid": "q023",
+    "question": "What year did the Tokyo Metro open?",
+    "ground_truth_answer": "1927",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Tokyo_Metro",
+    "category": "factual"
+  },
+  {
+    "qid": "q024",
+    "question": "How many islands make up the Maldives?",
+    "ground_truth_answer": "Over 1,000 islands",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Maldives",
+    "category": "factual"
+  },
+  {
+    "qid": "q025",
+    "question": "What is the main religion in Bali?",
+    "ground_truth_answer": "Hinduism",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Bali",
+    "category": "factual"
+  },
+  {
+    "qid": "q026",
+    "question": "When was the Hagia Sophia built?",
+    "ground_truth_answer": "537 AD",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+    "category": "factual"
+  },
+  {
+    "qid": "q027",
+    "question": "What is the name of the famous clock tower in London?",
+    "ground_truth_answer": "Big Ben (Elizabeth Tower)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Big_Ben",
+    "category": "factual"
+  },
+  {
+    "qid": "q028",
+    "question": "How many pyramids are in the Giza complex?",
+    "ground_truth_answer": "Three main pyramids",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Giza_pyramid_complex",
+    "category": "factual"
+  },
+  {
+    "qid": "q029",
+    "question": "What is the official name of the Vatican?",
+    "ground_truth_answer": "Vatican City State",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Vatican_City",
+    "category": "factual"
+  },
+  {
+    "qid": "q030",
+    "question": "When was Petra discovered by the Western world?",
+    "ground_truth_answer": "1812",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Petra",
+    "category": "factual"
+  },
+  {
+    "qid": "q031",
+    "question": "What ocean borders the Maldives?",
+    "ground_truth_answer": "Indian Ocean",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Maldives",
+    "category": "factual"
+  },
+  {
+    "qid": "q032",
+    "question": "Who painted the Sistine Chapel ceiling?",
+    "ground_truth_answer": "Michelangelo",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Vatican_City",
+    "category": "factual"
+  },
+  {
+    "qid": "q033",
+    "question": "What is the largest desert in the world?",
+    "ground_truth_answer": "Sahara Desert (hot desert) or Antarctic Desert (overall)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Sahara",
+    "category": "factual"
+  },
+  {
+    "qid": "q034",
+    "question": "When did the Berlin Wall fall?",
+    "ground_truth_answer": "1989",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Berlin_Wall",
+    "category": "factual"
+  },
+  {
+    "qid": "q035",
+    "question": "What is the name of the famous market in Istanbul?",
+    "ground_truth_answer": "Grand Bazaar",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Grand_Bazaar,_Istanbul",
+    "category": "factual"
+  },
+  {
+    "qid": "q036",
+    "question": "Describe the architectural style of the Eiffel Tower.",
+    "ground_truth_answer": "Iron lattice tower with wrought-iron structure, Art Nouveau influenced design",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q037",
+    "question": "What makes the Great Barrier Reef unique?",
+    "ground_truth_answer": "It is the world's largest coral reef system, visible from space, hosting diverse marine life",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q038",
+    "question": "Describe the landscape of Santorini.",
+    "ground_truth_answer": "Volcanic island with white-washed buildings, blue domes, steep cliffs, and caldera views",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Santorini",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q039",
+    "question": "What are the main features of Machu Picchu?",
+    "ground_truth_answer": "Inca citadel with terraces, temples, and stone structures set on a mountain ridge",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Machu_Picchu",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q040",
+    "question": "Describe the experience of visiting the Grand Bazaar in Istanbul.",
+    "ground_truth_answer": "One of the world's oldest and largest covered markets with thousands of shops selling jewelry, textiles, spices, and souvenirs",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Grand_Bazaar,_Istanbul",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q041",
+    "question": "What is the atmosphere like in Times Square, New York?",
+    "ground_truth_answer": "Vibrant, crowded commercial intersection with bright digital billboards and advertisements",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Times_Square",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q042",
+    "question": "Describe the natural beauty of Niagara Falls.",
+    "ground_truth_answer": "Three massive waterfalls on the border of USA and Canada with powerful cascading water",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Niagara_Falls",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q043",
+    "question": "What makes Venice unique as a city?",
+    "ground_truth_answer": "A city built on water with canals instead of streets, connected by bridges, with gondolas as transport",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Venice",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q044",
+    "question": "Describe the cultural significance of the Taj Mahal.",
+    "ground_truth_answer": "A symbol of love, Mughal architecture masterpiece, and UNESCO World Heritage Site",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q045",
+    "question": "What is the experience of riding the Tokyo Metro like?",
+    "ground_truth_answer": "Efficient, punctual, crowded during rush hours, with clean stations and clear signage",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Tokyo_Metro",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q046",
+    "question": "Describe the wildlife in Kruger National Park.",
+    "ground_truth_answer": "Home to Big Five (lions, leopards, rhinos, elephants, buffalo) and diverse African wildlife",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Kruger_National_Park",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q047",
+    "question": "What makes Dubai's architecture distinctive?",
+    "ground_truth_answer": "Ultra-modern skyscrapers, futuristic designs, artificial islands, and luxury developments",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Dubai",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q048",
+    "question": "Describe the natural features of Iceland.",
+    "ground_truth_answer": "Volcanic landscapes, geysers, hot springs, glaciers, waterfalls, and Northern Lights",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Iceland",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q049",
+    "question": "What is the cultural atmosphere of Marrakech?",
+    "ground_truth_answer": "Vibrant medina with souks, riads, mosques, and traditional Moroccan architecture",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Marrakesh",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q050",
+    "question": "Describe the experience of visiting the Louvre Museum.",
+    "ground_truth_answer": "World's largest art museum with masterpieces like Mona Lisa in a historic palace",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Louvre",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q051",
+    "question": "What makes Central Park in New York special?",
+    "ground_truth_answer": "Urban oasis with lakes, walking paths, meadows, and recreational facilities in Manhattan",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Central_Park",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q052",
+    "question": "Describe the traditional architecture in Kyoto.",
+    "ground_truth_answer": "Historic temples, shrines, traditional wooden houses, and zen gardens",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Kyoto",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q053",
+    "question": "What is the atmosphere at Shibuya Crossing?",
+    "ground_truth_answer": "One of the busiest pedestrian crossings in the world with thousands crossing at once",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Shibuya_Crossing",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q054",
+    "question": "Describe the landscape of Patagonia.",
+    "ground_truth_answer": "Dramatic mountain peaks, glaciers, fjords, and vast wilderness in South America",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Patagonia",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q055",
+    "question": "What is special about the Blue Lagoon in Iceland?",
+    "ground_truth_answer": "Geothermal spa with milky-blue mineral-rich waters surrounded by volcanic landscape",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Blue_Lagoon_(geothermal_spa)",
+    "category": "descriptive"
+  },
+  {
+    "qid": "q056",
+    "question": "How does the Eiffel Tower compare to the Empire State Building in height?",
+    "ground_truth_answer": "Empire State Building (443m with antenna) is taller than Eiffel Tower (330m)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+    "category": "comparative"
+  },
+  {
+    "qid": "q057",
+    "question": "Which is older: the Colosseum or the Parthenon?",
+    "ground_truth_answer": "The Parthenon is older (5th century BC vs 70-80 AD)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Parthenon",
+    "category": "comparative"
+  },
+  {
+    "qid": "q058",
+    "question": "Compare the London Underground with the Tokyo Metro in terms of size.",
+    "ground_truth_answer": "Tokyo Metro handles more daily passengers but London Underground has more stations",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/London_Underground",
+    "category": "comparative"
+  },
+  {
+    "qid": "q059",
+    "question": "Which waterfall is higher: Niagara Falls or Victoria Falls?",
+    "ground_truth_answer": "Victoria Falls is significantly higher (108m vs 51m)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+    "category": "comparative"
+  },
+  {
+    "qid": "q060",
+    "question": "Compare Paris and London as tourist destinations.",
+    "ground_truth_answer": "Both are major European capitals; Paris known for art and cuisine, London for history and diversity",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Paris",
+    "category": "comparative"
+  },
+  {
+    "qid": "q061",
+    "question": "Which is the longer river: the Nile or the Amazon?",
+    "ground_truth_answer": "The Nile is traditionally considered longer, though measurements vary",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Nile",
+    "category": "comparative"
+  },
+  {
+    "qid": "q062",
+    "question": "Compare Singapore and Hong Kong as financial hubs.",
+    "ground_truth_answer": "Both are major Asian financial centers with strong economies and international connections",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Singapore",
+    "category": "comparative"
+  },
+  {
+    "qid": "q063",
+    "question": "Which mountain is taller: K2 or Mount Everest?",
+    "ground_truth_answer": "Mount Everest is taller (8,849m vs 8,611m)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/K2",
+    "category": "comparative"
+  },
+  {
+    "qid": "q064",
+    "question": "Compare the Grand Canyon and Bryce Canyon.",
+    "ground_truth_answer": "Grand Canyon is much larger and deeper; Bryce Canyon known for unique hoodoo formations",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Grand_Canyon",
+    "category": "comparative"
+  },
+  {
+    "qid": "q065",
+    "question": "Which airport is busier: Dubai International or Heathrow?",
+    "ground_truth_answer": "Dubai International typically handles more international passengers",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Dubai_International_Airport",
+    "category": "comparative"
+  },
+  {
+    "qid": "q066",
+    "question": "Compare Emirates and Singapore Airlines in terms of fleet size.",
+    "ground_truth_answer": "Emirates has a larger fleet, particularly of wide-body aircraft",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Emirates_(airline)",
+    "category": "comparative"
+  },
+  {
+    "qid": "q067",
+    "question": "Which is older: Borobudur or Angkor Wat?",
+    "ground_truth_answer": "Borobudur is older (9th century vs 12th century)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Borobudur",
+    "category": "comparative"
+  },
+  {
+    "qid": "q068",
+    "question": "Compare the Sahara and Gobi deserts.",
+    "ground_truth_answer": "Sahara is much larger and hotter; Gobi is a cold desert in Asia",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Sahara",
+    "category": "comparative"
+  },
+  {
+    "qid": "q069",
+    "question": "Which lake is deeper: Lake Baikal or Lake Titicaca?",
+    "ground_truth_answer": "Lake Baikal is much deeper (1,642m vs 281m)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Lake_Baikal",
+    "category": "comparative"
+  },
+  {
+    "qid": "q070",
+    "question": "Compare Yellowstone and Yosemite National Parks.",
+    "ground_truth_answer": "Yellowstone known for geothermal features; Yosemite famous for granite cliffs and waterfalls",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Yellowstone_National_Park",
+    "category": "comparative"
+  },
+  {
+    "qid": "q071",
+    "question": "Why would tourists prefer to visit Bali over other Indonesian islands?",
+    "ground_truth_answer": "Unique Hindu culture, beautiful temples, rice terraces, beaches, and developed tourism infrastructure",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Bali",
+    "category": "inferential"
+  },
+  {
+    "qid": "q072",
+    "question": "What can we infer about Dubai's economy from its architectural developments?",
+    "ground_truth_answer": "Wealthy, oil-rich economy with focus on diversification into tourism and real estate",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Dubai",
+    "category": "inferential"
+  },
+  {
+    "qid": "q073",
+    "question": "What does the preservation of Machu Picchu tell us about Peru's heritage policies?",
+    "ground_truth_answer": "Strong commitment to protecting cultural heritage and promoting sustainable tourism",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Machu_Picchu",
+    "category": "inferential"
+  },
+  {
+    "qid": "q074",
+    "question": "Why might Venice face challenges as a tourist destination in the future?",
+    "ground_truth_answer": "Rising sea levels, overtourism, and environmental degradation threaten the city",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Venice",
+    "category": "inferential"
+  },
+  {
+    "qid": "q075",
+    "question": "What can we infer about Japan's culture from its railway system efficiency?",
+    "ground_truth_answer": "Values punctuality, organization, and technological advancement",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Shinkansen",
+    "category": "inferential"
+  },
+  {
+    "qid": "q076",
+    "question": "Why has Iceland become a popular tourist destination recently?",
+    "ground_truth_answer": "Unique landscapes, Northern Lights, geothermal features, and Game of Thrones filming locations",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Iceland",
+    "category": "inferential"
+  },
+  {
+    "qid": "q077",
+    "question": "What does the construction of artificial islands in Dubai suggest about the emirate?",
+    "ground_truth_answer": "Ambition to expand limited coastal areas and create luxury real estate and attractions",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Palm_Jumeirah",
+    "category": "inferential"
+  },
+  {
+    "qid": "q078",
+    "question": "Why might the Great Barrier Reef be threatened in coming decades?",
+    "ground_truth_answer": "Climate change causing coral bleaching, ocean acidification, and rising water temperatures",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+    "category": "inferential"
+  },
+  {
+    "qid": "q079",
+    "question": "What can we learn about ancient Roman engineering from the Colosseum?",
+    "ground_truth_answer": "Advanced construction techniques, crowd management design, and durable building materials",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Colosseum",
+    "category": "inferential"
+  },
+  {
+    "qid": "q080",
+    "question": "Why do many tourists consider Santorini romantic?",
+    "ground_truth_answer": "Stunning sunsets, white-washed buildings, blue domes, and dramatic caldera views",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Santorini",
+    "category": "inferential"
+  },
+  {
+    "qid": "q081",
+    "question": "What can we infer about Singapore's governance from its cleanliness?",
+    "ground_truth_answer": "Strict laws, effective enforcement, and emphasis on public order and civic responsibility",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Singapore",
+    "category": "inferential"
+  },
+  {
+    "qid": "q082",
+    "question": "Why might the Maldives face existential challenges?",
+    "ground_truth_answer": "Low-lying islands at risk from rising sea levels due to climate change",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Maldives",
+    "category": "inferential"
+  },
+  {
+    "qid": "q083",
+    "question": "What does the popularity of safaris in Kenya suggest about wildlife tourism?",
+    "ground_truth_answer": "Strong demand for authentic wildlife experiences and importance of conservation",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Masai_Mara",
+    "category": "inferential"
+  },
+  {
+    "qid": "q084",
+    "question": "Why is the Schengen Area beneficial for European tourism?",
+    "ground_truth_answer": "Allows border-free travel, making multi-country trips easier for tourists",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Schengen_Area",
+    "category": "inferential"
+  },
+  {
+    "qid": "q085",
+    "question": "What challenges might arise from overtourism at sites like Barcelona?",
+    "ground_truth_answer": "Strain on infrastructure, housing price increases, and local resident displacement",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Barcelona",
+    "category": "inferential"
+  },
+  {
+    "qid": "q086",
+    "question": "If someone wanted to see both the Eiffel Tower and the Louvre, how would they plan their trip?",
+    "ground_truth_answer": "Both are in Paris and can be visited in one day, connected by walking or metro",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Paris",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q087",
+    "question": "Which country would you visit to see both Angkor Wat and the Mekong River?",
+    "ground_truth_answer": "Cambodia (Angkor Wat is in Siem Reap, Mekong flows through the country)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Angkor_Wat",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q088",
+    "question": "How could a tourist visit both the Colosseum and Vatican City in one day?",
+    "ground_truth_answer": "Both are in Rome, about 5km apart, easily connected by metro or walking",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Rome",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q089",
+    "question": "What transportation connects London to Paris for tourists?",
+    "ground_truth_answer": "Eurostar high-speed train through the Channel Tunnel",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Eurostar",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q090",
+    "question": "If visiting both Sydney Opera House and the Great Barrier Reef, what region of Australia would you be exploring?",
+    "ground_truth_answer": "Eastern coast - Sydney in New South Wales, Great Barrier Reef in Queensland",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Sydney",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q091",
+    "question": "Which Japanese city would allow you to visit both ancient temples and take a bullet train?",
+    "ground_truth_answer": "Kyoto (temples) connected by Shinkansen to other major cities",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Kyoto",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q092",
+    "question": "How are the Alhambra and Sagrada Familia connected geographically?",
+    "ground_truth_answer": "Both are in Spain - Alhambra in Granada, Sagrada Familia in Barcelona",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Alhambra",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q093",
+    "question": "What Asian country features both Marina Bay Sands and Gardens by the Bay?",
+    "ground_truth_answer": "Singapore - both attractions are adjacent to each other in the Marina Bay area",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Singapore",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q094",
+    "question": "Which African region would let you see Victoria Falls and go on safari in Kruger?",
+    "ground_truth_answer": "Southern Africa - Victoria Falls on Zimbabwe/Zambia border, Kruger in South Africa",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q095",
+    "question": "How would you travel from the Taj Mahal to the Red Fort?",
+    "ground_truth_answer": "Train or car from Agra (Taj Mahal) to Delhi (Red Fort), about 200km apart",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q096",
+    "question": "Which country would you visit to see both Machu Picchu and Lake Titicaca?",
+    "ground_truth_answer": "Peru (both are major attractions in the southern Andes region)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Machu_Picchu",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q097",
+    "question": "What mode of transport connects Grand Central Terminal to Times Square?",
+    "ground_truth_answer": "New York City Subway or walking (about 10 minutes apart in Manhattan)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Grand_Central_Terminal",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q098",
+    "question": "Which European capital has both the Brandenburg Gate and the remnants of the Berlin Wall?",
+    "ground_truth_answer": "Berlin, Germany",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Berlin",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q099",
+    "question": "How are Borobudur and Prambanan temples connected?",
+    "ground_truth_answer": "Both are ancient temples on the island of Java, Indonesia, about 40km apart",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Borobudur",
+    "category": "multi_hop"
+  },
+  {
+    "qid": "q100",
+    "question": "Which airline would be suitable for flying between Dubai and Singapore?",
+    "ground_truth_answer": "Emirates (based in Dubai) or Singapore Airlines (based in Singapore)",
+    "ground_truth_url": "https://en.wikipedia.org/wiki/Emirates_(airline)",
+    "category": "multi_hop"
+  }
+]
