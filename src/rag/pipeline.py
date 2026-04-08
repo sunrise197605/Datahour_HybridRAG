@@ -16,6 +16,7 @@ from src.generation.llm import LLMGenerator
 from src.generation.prompt import build_prompt
 from src.retrieval.bm25 import BM25Index
 from src.retrieval.dense import DenseIndex
+from src.retrieval.reranker import CrossEncoderReranker
 from src.retrieval.rrf import reciprocal_rank_fusion, top_n_by_score
 from src.types import Chunk, RAGAnswer, RetrievedChunk
 
@@ -28,19 +29,30 @@ class HybridRAG:
         bm25_index: BM25Index,
         generator: LLMGenerator,
         rrf_constant: int = 60,
+        reranker: "CrossEncoderReranker | None" = None,
     ):
         self.chunks = chunks
         self.dense_index = dense_index
         self.bm25_index = bm25_index
         self.generator = generator
         self.rrf_constant = rrf_constant
+        self.reranker = reranker
 
     def build(self) -> None:
         self.dense_index.build(self.chunks)
         self.bm25_index.build(self.chunks)
         self.generator.load()
+        if self.reranker is not None:
+            self.reranker.load()
 
-    def retrieve(self, query: str, top_k: int = 50, context_size: int = 6) -> List[RetrievedChunk]:
+    def retrieve(
+        self,
+        query: str,
+        top_k: int = 50,
+        context_size: int = 6,
+        use_reranker: bool = False,
+        rerank_pool: int = 25,
+    ) -> List[RetrievedChunk]:
         dense_indices, dense_scores = self.dense_index.search(query, top_k=top_k)
         sparse_indices, sparse_scores = self.bm25_index.search(query, top_k=top_k)
 
@@ -50,7 +62,11 @@ class HybridRAG:
             fusion_constant=self.rrf_constant,
             limit=top_k,
         )
-        fused_top = top_n_by_score(fused_scores, top_n=context_size)
+        # If reranking, pull a larger pool from RRF and let the cross-encoder
+        # pick the final context_size. Otherwise, take context_size directly.
+        rerank_active = use_reranker and self.reranker is not None
+        first_stage_n = max(rerank_pool, context_size) if rerank_active else context_size
+        fused_top = top_n_by_score(fused_scores, top_n=first_stage_n)
 
         dense_rank_lookup = {int(doc_index): rank + 1 for rank, doc_index in enumerate(dense_indices)}
         sparse_rank_lookup = {int(doc_index): rank + 1 for rank, doc_index in enumerate(sparse_indices)}
@@ -70,13 +86,34 @@ class HybridRAG:
                     bm25_rank=sparse_rank_lookup.get(int(doc_index)),
                 )
             )
+
+        if rerank_active:
+            retrieved_chunks = self.reranker.rerank(
+                query=query,
+                candidates=retrieved_chunks,
+                top_n=context_size,
+            )
         return retrieved_chunks
 
-    def answer(self, query: str, top_k: int = 50, context_size: int = 6, max_new_tokens: int = 128) -> RAGAnswer:
+    def answer(
+        self,
+        query: str,
+        top_k: int = 50,
+        context_size: int = 6,
+        max_new_tokens: int = 128,
+        use_reranker: bool = False,
+        rerank_pool: int = 25,
+    ) -> RAGAnswer:
         overall_start = time.perf_counter()
 
         retrieval_start = time.perf_counter()
-        context_chunks = self.retrieve(query, top_k=top_k, context_size=context_size)
+        context_chunks = self.retrieve(
+            query,
+            top_k=top_k,
+            context_size=context_size,
+            use_reranker=use_reranker,
+            rerank_pool=rerank_pool,
+        )
         retrieval_end = time.perf_counter()
 
         prompt = build_prompt(query=query, context_chunks=context_chunks)

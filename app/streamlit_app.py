@@ -19,6 +19,7 @@ from src.generation.llm import LLMGenerator
 from src.rag.pipeline import HybridRAG
 from src.retrieval.bm25 import BM25Index
 from src.retrieval.dense import DenseIndex
+from src.retrieval.reranker import CrossEncoderReranker
 from src.types import Chunk
 from src.utils.io import read_jsonl
 
@@ -41,12 +42,18 @@ def load_rag_system():
     generator = LLMGenerator(model_name="google/flan-t5-base", device="cpu")
     generator.load()
     
+    reranker = CrossEncoderReranker(
+        model_name="cross-encoder/ms-marco-MiniLM-L-6-v2",
+        device="cpu",
+    )
+
     rag = HybridRAG(
         chunks=chunks,
         dense_index=dense_index,
         bm25_index=bm25_index,
         generator=generator,
         rrf_constant=60,
+        reranker=reranker,
     )
     
     return rag, len(chunks)
@@ -57,10 +64,14 @@ def render_context(retrieved_chunks):
         with st.expander(f"Source {pos}: {retrieved.chunk.title}", expanded=(pos <= 2)):
             st.write(f"URL: {retrieved.chunk.url}")
             
-            col1, col2, col3 = st.columns(3)
+            col1, col2, col3, col4 = st.columns(4)
             col1.metric("Dense Rank", retrieved.dense_rank or "N/A")
             col2.metric("BM25 Rank", retrieved.bm25_rank or "N/A")
             col3.metric("RRF Score", f"{retrieved.rrf_score:.4f}")
+            if retrieved.rerank_score is not None:
+                col4.metric("Rerank Score", f"{retrieved.rerank_score:.3f}")
+            else:
+                col4.metric("Rerank Score", "N/A")
             
             text = retrieved.chunk.text
             if len(text) > 500:
@@ -88,12 +99,18 @@ def main():
     st.sidebar.header("Settings")
     top_k = st.sidebar.slider("Retrieval Top-K", 10, 100, 50)
     context_size = st.sidebar.slider("Context Chunks", 3, 10, 6)
-    max_tokens = st.sidebar.slider("Max Tokens", 50, 200, 100)
-    
+    max_tokens = st.sidebar.slider("Max Tokens", 50, 250, 160)
+
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("Re-Ranker")
+    use_reranker = st.sidebar.checkbox("Enable Cross-Encoder Re-Ranker", value=True)
+    rerank_pool = st.sidebar.slider("Rerank Pool Size", 10, 50, 25, disabled=not use_reranker)
+
     st.sidebar.markdown("---")
     st.sidebar.write("Dense: all-mpnet-base-v2")
     st.sidebar.write("Sparse: BM25 Okapi")
     st.sidebar.write("Fusion: RRF (k=60)")
+    st.sidebar.write("Reranker: ms-marco-MiniLM-L-6-v2")
     st.sidebar.write("LLM: Flan-T5-Base")
     
     st.markdown("---")
@@ -119,7 +136,14 @@ def main():
         st.markdown("---")
         
         with st.spinner("Processing..."):
-            result = rag.answer(query, top_k=top_k, context_size=context_size, max_new_tokens=max_tokens)
+            result = rag.answer(
+                query,
+                top_k=top_k,
+                context_size=context_size,
+                max_new_tokens=max_tokens,
+                use_reranker=use_reranker,
+                rerank_pool=rerank_pool,
+            )
         
         st.header("Answer")
         st.write(result.answer)

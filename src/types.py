@@ -27,6 +27,8 @@ class RetrievedChunk:
     rrf_score: float = 0.0
     dense_rank: Optional[int] = None
     bm25_rank: Optional[int] = None
+    rerank_score: Optional[float] = None
+    rerank_rank: Optional[int] = None
 
 
 @dataclass(frozen=True)

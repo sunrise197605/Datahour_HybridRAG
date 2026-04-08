@@ -20,9 +20,11 @@ def build_prompt(query: str, context_chunks: List[RetrievedChunk]) -> str:
 
     prompt = (
         "You are a helpful assistant. Answer the question using only the provided context. "
+        "If the question has multiple parts, address every part in one complete sentence. "
+        "Include all relevant facts such as locations, dates, years, and numbers. "
         "If the answer is not present in the context, say you do not know.\n\n"
         f"Question: {query}\n\n"
         f"Context:\n{context_text}\n\n"
-        "Answer:"
+        "Complete answer:"
     )
     return prompt
