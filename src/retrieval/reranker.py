@@ -15,6 +15,22 @@ from src.types import RetrievedChunk
 
 
 class CrossEncoderReranker:
+    """Second-stage re-ranker using a cross-encoder model.
+
+    A bi-encoder dense retriever and BM25 score queries and documents
+    separately, so they are fast but can miss subtle relevance. A
+    cross-encoder instead concatenates the query and the candidate chunk
+    and runs full self-attention across both, producing a much sharper
+    relevance score at the cost of being too slow to score the whole
+    corpus. The Hybrid RAG pipeline takes advantage of both: fuse the
+    dense and BM25 top-K into roughly 25 candidates, then let this
+    cross-encoder rescore every (query, chunk) pair and reorder the
+    final context window. The default model, cross-encoder/ms-marco-
+    MiniLM-L-6-v2, is small enough to run on CPU and trained on the
+    MS MARCO passage-ranking task, which makes it a strong default for
+    open-domain question answering.
+    """
+
     def __init__(
         self,
         model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2",

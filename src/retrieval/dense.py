@@ -28,6 +28,21 @@ def _normalize_matrix(matrix: np.ndarray) -> np.ndarray:
 
 
 class DenseIndex:
+    """Dense (semantic) retriever for the Hybrid RAG pipeline.
+
+    Uses a sentence-transformer model (default all-mpnet-base-v2, 768
+    dimensions) to embed each chunk into a vector whose direction captures
+    meaning rather than exact wording. All embeddings are L2-normalised so
+    that inner product equals cosine similarity, and they are stored in a
+    FAISS IndexFlatIP for fast nearest-neighbour search. At query time the
+    same encoder embeds the user question and FAISS returns the top-K
+    chunks whose vectors are closest, which lets the retriever find
+    paraphrases, synonyms, and related concepts that plain keyword search
+    misses. If FAISS is unavailable the class falls back to a pure numpy
+    dot product against the normalized embedding matrix. Build once, save
+    to disk, and reload with the load() classmethod at serving time.
+    """
+
     def __init__(self, model_name: str = "all-mpnet-base-v2"):
         self.model_name = model_name
         self.encoder = None    # SentenceTransformer, loaded in build() or load()

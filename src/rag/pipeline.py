@@ -22,6 +22,22 @@ from src.types import Chunk, RAGAnswer, RetrievedChunk
 
 
 class HybridRAG:
+    """End-to-end Hybrid Retrieval-Augmented Generation pipeline.
+
+    Orchestrates four stages to turn a user question into a grounded answer.
+    First, the query is sent in parallel to a dense semantic retriever
+    (sentence-transformer + FAISS) and a sparse BM25 retriever; each returns
+    its top-K chunks. The two ranked lists are merged with Reciprocal Rank
+    Fusion, which cares only about rank position and therefore needs no
+    score calibration between the two retrievers. An optional cross-encoder
+    re-ranker then rescores every (query, chunk) pair jointly on the top
+    candidates and picks the final context window. Finally the selected
+    chunks are packed into a prompt and sent to Flan-T5, which produces an
+    answer grounded in the retrieved text. The returned RAGAnswer carries
+    the answer, the source chunks with their per-stage ranks and scores,
+    and a latency breakdown for observability and debugging.
+    """
+
     def __init__(
         self,
         chunks: List[Chunk],

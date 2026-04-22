@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional
 
 @dataclass(frozen=True)
 class Chunk:
+    """A single passage of source text with its provenance metadata."""
     chunk_id: str
     url: str
     title: str
@@ -21,6 +22,13 @@ class Chunk:
 
 @dataclass(frozen=True)
 class RetrievedChunk:
+    """A chunk paired with every per-stage score and rank it earned.
+
+    Carries the dense and BM25 raw scores and 1-based ranks, the fused
+    RRF score, and (if the cross-encoder ran) the rerank score and rank.
+    Keeping all stages on one object makes explainability trivial: the UI
+    simply prints the four numbers side by side for each source.
+    """
     chunk: Chunk
     dense_score: float = 0.0
     bm25_score: float = 0.0
@@ -33,6 +41,13 @@ class RetrievedChunk:
 
 @dataclass(frozen=True)
 class RAGAnswer:
+    """The final envelope returned by HybridRAG.answer().
+
+    Bundles the original question, the generated answer, the context
+    chunks used to produce it (for citation and audit), a latency
+    breakdown across retrieve / generate / total, and a free-form debug
+    dict for anything the pipeline wants to surface to the caller.
+    """
     query: str
     answer: str
     context_chunks: List[RetrievedChunk]

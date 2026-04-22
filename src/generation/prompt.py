@@ -11,6 +11,19 @@ from src.types import RetrievedChunk
 
 
 def build_prompt(query: str, context_chunks: List[RetrievedChunk]) -> str:
+    """Assemble the final LLM prompt from a query and retrieved context.
+
+    The prompt is structured in three parts: an instruction, the question,
+    and the context. The instruction tells the model to answer strictly
+    from the provided context, to address every part of a multi-part
+    question, and to include concrete facts like dates, locations, and
+    numbers. Each retrieved chunk is prefixed with a numbered source
+    header (title plus URL) so the model can be gently steered toward
+    grounded phrasing and so the downstream UI can map each claim back
+    to a clickable citation. The instruction also tells the model to
+    admit when it does not know, which is the main guardrail against
+    hallucination for open-domain questions.
+    """
     context_blocks = []
     for idx, retrieved in enumerate(context_chunks, start=1):
         source_line = f"Source {idx}: {retrieved.chunk.title} ({retrieved.chunk.url})"

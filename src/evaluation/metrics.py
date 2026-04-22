@@ -79,7 +79,19 @@ def claim_supported_faithfulness(
     sim_threshold: float = 0.78,
     max_chunks_to_check: int = 8,
 ) -> float:
-    """CSFS: checks if answer claims are supported by retrieved context."""
+    """Claim-Supported Faithfulness Score — a hallucination detector.
+
+    Splits the generated answer into individual atomic claims, embeds each
+    claim with the same sentence-transformer used for retrieval, and
+    compares every claim against every retrieved chunk via cosine
+    similarity. A claim is considered supported if its best-matching
+    chunk exceeds sim_threshold and has no contradicting numeric facts
+    (years, heights, counts). The final score is the fraction of claims
+    that pass both checks. A low score means either the LLM is
+    hallucinating beyond the context, or the retrieved chunks are too
+    short to verify the answer — common with small generators like
+    Flan-T5-base that emit one-sentence replies.
+    """
     claims = _split_into_claims(answer.answer)
     if not claims:
         return 0.0
@@ -118,6 +130,17 @@ def unique_url_ranking(answer: RAGAnswer) -> List[str]:
 
 
 def mean_reciprocal_rank_url_level(answers: List[RAGAnswer], ground_truth_urls: List[str]) -> float:
+    """Mean Reciprocal Rank at URL level across a batch of answers.
+
+    For every answer, deduplicates the retrieved chunks by source URL and
+    finds where the ground-truth URL sits in that list; its contribution
+    is 1 / rank if found, or 0 otherwise. The returned mean across the
+    batch is the standard retrieval quality metric: 1.0 means the correct
+    document was always first, 0.5 means it was typically second, and 0
+    means it was never retrieved. URL-level rather than chunk-level
+    because a Wikipedia article is split into many chunks and the one we
+    ranked matters less than whether the right article was surfaced.
+    """
     if len(answers) != len(ground_truth_urls):
         raise ValueError("Answers and ground truth URL lists must have the same length.")
 
@@ -136,7 +159,14 @@ def mean_reciprocal_rank_url_level(answers: List[RAGAnswer], ground_truth_urls: 
 
 
 def hit_rate_at_k_url_level(answers: List[RAGAnswer], ground_truth_urls: List[str], k: int = 5) -> float:
-    """Check if correct URL appears in top-K results."""
+    """Fraction of queries whose correct source URL lands in the top-K.
+
+    A coarse but very readable metric: unlike MRR it does not care about
+    the exact rank within the top-K, only whether the right document is
+    there at all. Useful for quickly comparing retrievers during tuning
+    and as a sanity check — if HitRate@5 is below about 0.8 the
+    downstream LLM cannot save you no matter how good it is.
+    """
     if k <= 0:
         raise ValueError("k must be positive")
     if len(answers) != len(ground_truth_urls):

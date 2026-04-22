@@ -20,8 +20,18 @@ class ChatMessage:
 
 
 class MistralChat:
-    """Wrapper for Mistral Instruct-style models (e.g., Mistral-7B-Instruct).
-    Formats messages into the [SYSTEM]/[USER]/[ASSISTANT] prompt format."""
+    """Evaluator-side wrapper for a Mistral Instruct causal LM.
+
+    Used only by the evaluation harness — the runtime RAG pipeline uses the
+    lighter Flan-T5 generator in llm.py. This class takes a list of
+    ChatMessage objects with system, user, and assistant roles and serializes
+    them into Mistral's [INST] / [/INST] prompt format, then decodes only
+    the new tokens produced by the model to avoid leaking the prompt back
+    into the output. On GPU it loads in float16 to fit 7B parameters in a
+    single card; on CPU it falls back to float32. It powers both the
+    LLM-as-Judge grader for answer quality and the automatic question
+    generator that seeds the evaluation set from random Wikipedia chunks.
+    """
     def __init__(self, model_name: str = "mistralai/Mistral-7B-Instruct-v0.2", device: str = "cuda"):
         self.model_name = model_name
         self.device = device

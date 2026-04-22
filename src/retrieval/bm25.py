@@ -24,6 +24,21 @@ def simple_tokenize(text: str) -> List[str]:
 
 
 class BM25Index:
+    """Sparse lexical retriever based on BM25 Okapi.
+
+    BM25 ranks documents by term-frequency weighted by inverse document
+    frequency, so rare words that appear often in a document get the
+    highest weight. Unlike the dense retriever there is no embedding
+    model: chunks are tokenized by simple lowercasing and whitespace
+    splitting, then indexed by rank_bm25.BM25Okapi with the standard k1
+    and b hyperparameters. This makes BM25 fast, cheap, and completely
+    deterministic, and it shines exactly where dense retrieval struggles:
+    proper nouns, identifiers, version numbers, error codes, and any
+    query where the user uses the same exact words as the document. In
+    the hybrid pipeline BM25 and the dense index run in parallel and
+    their complementary strengths are fused downstream.
+    """
+
     def __init__(self, k1: float = 1.5, b: float = 0.75):
         self.k1 = k1
         self.b = b

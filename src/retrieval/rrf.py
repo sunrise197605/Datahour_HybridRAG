@@ -16,12 +16,19 @@ def reciprocal_rank_fusion(
     fusion_constant: int = 60,
     limit: Optional[int] = None,
 ) -> Dict[int, float]:
-    """
-    Computes Reciprocal Rank Fusion scores.
+    """Fuse multiple ranked retrieval lists into a single relevance score.
 
-    Score(doc) = sum over lists i of 1 / (fusion_constant + rank_i(doc))
-
-    Ranks are 1-based.
+    Reciprocal Rank Fusion is a rank-only combiner: each document receives
+    a contribution of 1 / (k + rank) from every list it appears in, and
+    the sum across lists becomes its fused score. Because the formula
+    uses rank position rather than raw scores, it sidesteps the calibration
+    headache of combining cosine similarity with BM25 term weights, which
+    live on completely different scales. The fusion_constant k (60 is the
+    published default) softens the dominance of rank-one entries so that
+    documents appearing high in both lists rise above singletons that
+    appear in only one. Adding a third retriever is a one-line change,
+    which is why RRF is the default fusion method in most production
+    hybrid search systems.
     """
     if limit is not None:
         dense_ranked_indices = dense_ranked_indices[:limit]

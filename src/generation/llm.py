@@ -13,6 +13,21 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 
 class LLMGenerator:
+    """Seq2Seq answer generator wrapping a Flan-T5 model.
+
+    The generator takes a fully built prompt (question plus retrieved
+    context) and returns a grounded answer string. It is a thin wrapper
+    around HuggingFace AutoModelForSeq2SeqLM and AutoTokenizer for
+    google/flan-t5-base, which is small enough to run on CPU without a
+    GPU, yet instruction-tuned well enough to follow the "answer only
+    from the provided context" prompt reliably. Generation is done with
+    greedy decoding (do_sample=False) so that answers are reproducible
+    across runs, which matters for evaluation harnesses and demos.
+    The model is loaded once via load() and reused for every query to
+    avoid repeated cold starts. Swap model_name to flan-t5-large or a
+    Mistral chat model to trade latency for higher answer quality.
+    """
+
     def __init__(self, model_name: str = "google/flan-t5-base", device: str = "cpu"):
         self.model_name = model_name
         self.device = device
